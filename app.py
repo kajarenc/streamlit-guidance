@@ -18,6 +18,8 @@ if not st.session_state.is_authorized:
     if passcode == st.secrets["PASSCODE"]:
         st.session_state.is_authorized = True
         st.experimental_rerun()
+    elif passcode and passcode != st.secrets["PASSCODE"]:
+        st.warning("Wrong passcode!")
 
 if st.session_state.is_authorized:
     prompt_content = get_prompt()
