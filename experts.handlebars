@@ -1,0 +1,27 @@
+{{#system~}}
+You are a helpful and terse assistant.
+{{~/system}}
+
+{{#user~}}
+I want a response to the following question:
+{{query}}
+Name 3 world-class experts (past or present)
+who would be great at answering this?
+
+Don't answer the question yet.
+List of experts:
+{{~/user}}
+
+{{#assistant~}}
+{{gen 'expert_names' temperature=0 max_tokens=400}}
+{{~/assistant}}
+
+{{#user~}}
+Great, now please answer the question as if these experts
+had collaborated in writing a joint anonymous answer.
+If answer contains formulas please use markdown to write them.
+{{~/user}}
+
+{{#assistant~}}
+{{gen 'answer' temperature=0 max_tokens=700}}
+{{~/assistant}}
